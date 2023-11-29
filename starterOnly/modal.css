@@ -1,7 +1,7 @@
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
-  --modal-duration: 0.8s;
+  --modal-duration: 800ms;
 }
 * {
   box-sizing: border-box;
@@ -157,7 +157,7 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.overlay {
   display: none;
   position: fixed;
   z-index: 1;
@@ -173,14 +173,20 @@ main {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
   color: #fff;
   padding-top: 10px;
+  opacity: 0;
+  transform: translateY(-150px);
+  transition: transform var(--modal-duration), opacity var(--modal-duration);
+}
+
+.overlay.show .content {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .modal-body {
@@ -517,13 +523,13 @@ footer {
   }
 }
 
-@keyframes modalopen {
-  from {
-    opacity: 0;
-    transform: translateY(-150px);
-  }
-  to {
-    opacity: 1;
-  }
-}
+/*@keyframes modalopen {*/
+/*  from {*/
+/*    opacity: 0;*/
+/*    transform: translateY(-150px);*/
+/*  }*/
+/*  to {*/
+/*    opacity: 1;*/
+/*  }*/
+/*}*/
 
