@@ -1,0 +1,13 @@
+@mixin mobile {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+// not sure it's useful, but I'll keep it here for now as it's in the original repo
+// todo think i'll remove it, not sure why it's here in the first place
+@mixin small-mobile {
+  @media only screen and (max-width: 540px) {
+    @content;
+  }
+}
