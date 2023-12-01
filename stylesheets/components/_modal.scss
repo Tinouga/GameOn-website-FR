@@ -1,10 +1,10 @@
 @use "../abstracts" as *;
 
 .button {
-  background: #fe142f;
+  background: $primary;
   margin-top: 0.5em;
   padding: 1em;
-  color: #fff;
+  color: $white;
   border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
@@ -34,11 +34,11 @@
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
-  background: #232323;
+  background: $background;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  color: #fff;
+  color: $white;
   padding-top: 10px;
   opacity: 0;
   transform: translateY(-150px);
@@ -81,7 +81,7 @@ input {
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
-  color: #e54858;
+  color: $danger;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -96,7 +96,7 @@ input {
 }
 
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
+  border: 2px solid $danger;
 }
 
 /*
@@ -119,7 +119,7 @@ input[data-error]::after {
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 2px solid $secondary;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -134,7 +134,7 @@ input[data-error]::after {
   content: "";
   width: 13px;
   height: 13px;
-  background-color: #279e7a;
+  background-color: $secondary;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -156,7 +156,7 @@ input[data-error]::after {
 }
 
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
-  background: #279e7a;
+  background: $secondary;
 }
 
 .checkbox2-label .checkbox-icon {
@@ -171,8 +171,8 @@ input[data-error]::after {
   border-radius: 2px;
   background: transparent;
   border: 2px solid transparent;
-  border-bottom-color: #fff;
-  border-left-color: #fff;
+  border-bottom-color: $white;
+  border-left-color: $white;
   transform: rotate(-55deg);
   left: 21%;
   top: 19%;
@@ -196,7 +196,7 @@ input[data-error]::after {
   content: " ";
   height: 33px;
   width: 3px;
-  background-color: #fff;
+  background-color: $white;
 }
 
 .close:before {
@@ -209,13 +209,13 @@ input[data-error]::after {
 
 .btn-submit,
 .btn-signup {
-  background: #fe142f;
+  background: $primary;
   display: block;
   margin: 0 auto;
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
-  color: #fff;
+  color: $white;
   cursor: pointer;
   border: 0;
 }

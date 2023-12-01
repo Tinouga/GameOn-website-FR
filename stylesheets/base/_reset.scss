@@ -4,9 +4,21 @@
   padding: 0;
 }
 
+ul, ol {
+  list-style: none;
+}
+
 body {
   display: flex;
   flex-direction: column;
-  max-width: 1300px;
-  margin: 0 auto;
+}
+
+main {
+  max-width: 1240px;
+  margin: 0 7vw;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
