@@ -15,3 +15,8 @@ $font: "DM Sans", Arial, Helvetica, sans-serif;
  * Animations
  */
 $modalAnimationDuration: 800ms;
+
+// band-aid so that javascript can retrieve the sass variable
+:root {
+  --modal-animation-duration: #{$modalAnimationDuration};
+}

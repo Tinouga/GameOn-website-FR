@@ -4,6 +4,10 @@
 /**
  * Animations
  */
+:root {
+  --modal-animation-duration: 800ms;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -32,6 +36,26 @@ a {
 body {
   font-family: "DM Sans", Arial, Helvetica, sans-serif;
   font-size: 1.125rem;
+}
+
+.formData {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.error-message {
+  font-size: 0.825rem;
+  color: #e54858;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.text-control {
+  border: 2px solid transparent;
+}
+.text-control.error {
+  border-color: #e54858;
 }
 
 .button {
@@ -495,6 +519,7 @@ main {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 @media only screen and (max-width: 768px) {
   .hero-img img {

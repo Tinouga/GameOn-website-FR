@@ -142,6 +142,7 @@ main {
     height: 100%;
     display: block;
     padding: 0;
+    object-fit: cover;
 
     @include mobile {
       border-radius: 10px;

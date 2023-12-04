@@ -1,5 +1,27 @@
 @use "../abstracts" as *;
 
+.formData {
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+.error-message {
+  font-size: 0.825rem;
+  color: $danger;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.text-control {
+  border: 2px solid transparent;
+
+  &.error {
+    border-color: $danger;
+  }
+}
+
+// todo refactor everything below
 .button {
   background: $primary;
   margin-top: 0.5em;
