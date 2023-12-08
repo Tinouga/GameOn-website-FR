@@ -38,6 +38,63 @@ body {
   font-size: 1.125rem;
 }
 
+.banner {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: fixed;
+  z-index: 30;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #279e7a;
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.banner.show {
+  opacity: 1;
+}
+@media only screen and (max-width: 768px) {
+  .banner {
+    left: 0;
+    transform: translateX(0);
+    right: 0;
+    border-radius: 0;
+  }
+}
+.banner h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+.banner p {
+  font-size: 0.875rem;
+  font-weight: 300;
+  text-align: center;
+  white-space: nowrap;
+}
+@media only screen and (max-width: 768px) {
+  .banner p {
+    white-space: normal;
+  }
+}
+
+.btn-primary {
+  display: flex;
+  background: #fe142f;
+  color: #fff;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 0;
+}
+.btn-primary:hover {
+  background: #3876ac;
+}
+
 .formData {
   position: relative;
   padding-bottom: 1.5rem;
@@ -52,33 +109,31 @@ body {
 }
 
 .text-control {
-  border: 2px solid transparent;
+  border: 2px solid #232323;
+}
+.text-control:focus {
+  border-color: #279e7a;
 }
 .text-control.error {
   border-color: #e54858;
 }
 
-.button {
-  background: #fe142f;
-  margin-top: 0.5em;
-  padding: 1em;
-  color: #fff;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 16px;
+.sign-up-btn {
+  font-size: 1.063rem;
+  padding: 0.8rem 3.5rem;
+  margin: 1.21rem auto 0;
 }
-.button:hover {
-  background: #3876ac;
-}
-
-.smFont {
-  font-size: 16px;
+@media only screen and (max-width: 768px) {
+  .sign-up-btn {
+    padding: 0.4rem 2.22rem;
+    margin: 0.97rem auto 1.31rem;
+  }
 }
 
 .overlay {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 20;
   left: 0;
   top: 0;
   height: 100%;
@@ -92,14 +147,19 @@ body {
   width: 100%;
   max-width: 500px;
   background: #232323;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
+  padding: 3.07rem 2.43rem 1.07rem 2.43rem;
   opacity: 0;
   transform: translateY(-150px);
   transition: transform 800ms, opacity 800ms;
+}
+@media only screen and (max-width: 768px) {
+  .content {
+    padding: 2.38rem 1.88rem 1.31rem 1.88rem;
+  }
 }
 
 .overlay.show .content {
@@ -107,61 +167,28 @@ body {
   transform: translateY(0);
 }
 
-.modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
-}
-
-label {
-  font-family: var(--font-default);
-  font-size: 17px;
+label, .text-label {
+  font-size: 1.063rem;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 0.688rem;
 }
 
 input {
-  padding: 8px;
+  padding: 0.5rem;
   border: 0.8px solid #ccc;
   outline: none;
 }
 
 .text-control {
   margin: 0;
-  padding: 8px;
+  padding: 0.5rem;
   width: 100%;
   border-radius: 8px;
-  font-size: 20px;
-  height: 48px;
+  font-size: 1.25rem;
+  height: 3rem;
 }
 
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.formData[data-error-visible=true]::after {
-  opacity: 1;
-}
-
-.formData[data-error-visible=true] .text-control {
-  border: 2px solid #e54858;
-}
-
-/*
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -236,10 +263,10 @@ input[data-error]::after {
 
 .close {
   position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 32px;
+  right: 1rem;
+  top: 1rem;
+  width: 2rem;
+  height: 2rem;
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
@@ -248,7 +275,7 @@ input[data-error]::after {
 .close:before,
 .close:after {
   position: absolute;
-  left: 15px;
+  left: 1rem;
   content: " ";
   height: 33px;
   width: 3px;
@@ -261,19 +288,6 @@ input[data-error]::after {
 
 .close:after {
   transform: rotate(-45deg);
-}
-
-.btn-submit,
-.btn-signup {
-  background: #fe142f;
-  display: block;
-  margin: 0 auto;
-  border-radius: 7px;
-  font-size: 1rem;
-  padding: 12px 82px;
-  color: #fff;
-  cursor: pointer;
-  border: 0;
 }
 
 footer {
@@ -303,7 +317,7 @@ body > header {
   margin: 3.3rem calc(7vw - 3rem) 5.25rem 7vw;
   max-width: calc(1240px + 3rem);
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1080px) {
   body > header {
     margin: 2.3rem 1.8rem 1.75rem 1.8rem;
     max-width: 1240px;
@@ -317,7 +331,7 @@ body > header {
   background: #fff;
   border-radius: 0.5rem;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1080px) {
   .navbar {
     display: none;
     position: absolute;
@@ -332,7 +346,7 @@ body > header {
   display: flex;
   gap: 0.75rem;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1080px) {
   .navbar ul {
     flex-direction: column;
     gap: 0.25rem;
@@ -352,7 +366,7 @@ body > header {
   color: #fff;
   border-radius: 0.5rem;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1080px) {
   .navbar__link:hover, .navbar__link.active {
     border-radius: 0;
   }
@@ -366,7 +380,7 @@ body > header {
   height: 1px;
   background-color: #fff;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1080px) {
   .navbar__link.active::after {
     content: none;
   }
@@ -381,14 +395,10 @@ body > header {
   font-size: 1.5rem;
   color: #fe142f;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1080px) {
   .navbar__menu-btn {
     display: block;
   }
-}
-
-p {
-  padding: 0.5vw;
 }
 
 img {
@@ -404,17 +414,10 @@ main {
 }
 
 .modal-btn {
-  font-size: 145%;
-  background: #fe142f;
-  display: flex;
-  margin: auto;
-  color: #fff;
-  padding: 0.75rem 2.5rem;
-  border-radius: 1rem;
-  cursor: pointer;
-}
-.modal-btn:hover {
-  background: #3876ac;
+  font-size: 1.5625rem;
+  text-transform: capitalize;
+  padding: 1rem 1.5rem;
+  margin: 3.688rem 0 0;
 }
 
 .hero-section {
@@ -431,14 +434,15 @@ main {
     box-shadow: unset;
   }
 }
-.hero-section > .btn-signup {
+.hero-section > .modal-btn {
   display: none;
 }
 @media only screen and (max-width: 768px) {
-  .hero-section > .btn-signup {
+  .hero-section > .modal-btn {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
+    font-size: 0.875rem;
   }
 }
 
@@ -473,7 +477,7 @@ main {
   .hero-content::after {
     content: unset;
   }
-  .hero-content .btn-signup {
+  .hero-content .modal-btn {
     display: none;
   }
 }
@@ -501,14 +505,6 @@ main {
     width: unset;
     font-size: 1.5rem;
   }
-}
-
-.btn-signup {
-  outline: none;
-  text-transform: capitalize;
-  font-size: 1.3rem;
-  padding: 1rem 1.5rem;
-  margin: 3.688rem 0 0;
 }
 
 .hero-img {

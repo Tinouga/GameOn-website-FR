@@ -18,7 +18,7 @@ function launchModal() {
     overlay.style.display = "block";
     setTimeout(() => {
         overlay.classList.add("show");
-    })
+    });
 }
 
 /*

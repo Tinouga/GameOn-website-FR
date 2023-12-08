@@ -8,7 +8,7 @@ body > header {
   margin: 3.30rem calc(7vw - 3rem) 5.25rem 7vw;
   max-width: calc(1240px + 3rem);
 
-  @include mobile {
+  @include tablet {
     margin: 2.30rem 1.80rem 1.75rem 1.80rem;
     max-width: 1240px;
 
@@ -21,7 +21,7 @@ body > header {
 .navbar {
   background: $white;
   border-radius:0.5rem;
-  @include mobile {
+  @include tablet {
     display: none;
     position: absolute;
     top: 2.6rem;
@@ -35,7 +35,7 @@ body > header {
     display: flex;
     gap: 0.75rem;
 
-    @include mobile {
+    @include tablet {
       flex-direction: column;
       gap: 0.25rem;
     }
@@ -55,7 +55,7 @@ body > header {
       color: $white;
       border-radius: 0.5rem;
 
-      @include mobile {
+      @include tablet {
         border-radius: 0;
       }
     }
@@ -69,7 +69,7 @@ body > header {
       height: 1px;
       background-color: $white;
 
-      @include mobile {
+      @include tablet {
         content: none;
       }
     }
@@ -86,7 +86,7 @@ body > header {
       color: $primary;
     }
 
-    @include mobile {
+    @include tablet {
       display: block;
     }
   }

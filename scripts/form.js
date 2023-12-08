@@ -1,8 +1,11 @@
 const form = document.getElementById("inscriptionForm");
 
 form.addEventListener("submit", e => {
-    if(!validateForm()) {
-        e.preventDefault();
+    e.preventDefault();
+    if(validateForm()) {
+        showSuccessMessage();
+        // clear the form's inputs
+        form.reset();
     }
 });
 
@@ -16,19 +19,26 @@ function validateForm() {
     const email = document.getElementById("email");
     const birthdate = document.getElementById("birthdate");
     const quantity = document.getElementById("quantity");
+    const tournaments = document.querySelectorAll("input[name='location']");
+    const cgu = document.getElementById("cgu");
 
     // necessary to print multiple error messages
+    // if there was a previous error shown which is not needed anymore, we remove it
     validateName(firstName);
     validateName(lastName);
     validateEmail(email);
     validateBirthdate(birthdate);
     validateQuantity(quantity);
+    validateTournament(tournaments);
+    validateCgu(cgu);
 
     return validateName(firstName) &&
         validateName(lastName) &&
         validateEmail(email) &&
         validateBirthdate(birthdate) &&
-        validateQuantity(quantity);
+        validateQuantity(quantity) &&
+        validateTournament(tournaments) &&
+        validateCgu(cgu);
 }
 
 /**
@@ -42,6 +52,7 @@ function validateName(name) {
         setErrorMessage(name, "Veuillez entrer 2 caractères ou plus.");
         return false;
     }
+    clearErrorMessage(name);
     return true;
 }
 
@@ -58,6 +69,7 @@ function validateEmail(email) {
         setErrorMessage(email, "Veuillez entrer une adresse mail valide.");
         return false;
     }
+    clearErrorMessage(email);
     return true;
 }
 
@@ -82,21 +94,62 @@ function validateBirthdate(birthdate) {
         setErrorMessage(birthdate, "Vous devez avoir au moins 12 ans.");
         return false;
     }
+    clearErrorMessage(birthdate);
     return true;
 }
 
 /**
  * Test the quantity field
  * @param quantity - input element
- * @returns {boolean} true if the quantity is between 0 and 99, false otherwise
+ * @returns {boolean} true if the quantity is a number between 0 and 99, false otherwise
  */
 function validateQuantity(quantity) {
-    const quantityValue = parseInt(quantity.value, 10);
+    const quantityValue = quantity.value;
+    const quantityRegex = /^0*[0-9]{1,2}$/;
 
-    if(quantityValue < 0 || quantityValue > 99) {
+    if(!quantityRegex.test(quantityValue)) {
         setErrorMessage(quantity, "Veuillez entrer un nombre entre 0 et 99.");
         return false;
     }
+    clearErrorMessage(quantity);
+    return true;
+}
+
+/**
+ * Test the tournament field
+ * @param tournaments - list of all tournaments
+ * @returns {boolean} return true if a tournament is checked, false otherwise
+ */
+function validateTournament(tournaments) {
+    let checked = false;
+
+    // if one tournament is checked, the form is valid
+    for(let i = 0; i < tournaments.length; i++) {
+        if(tournaments[i].checked) {
+            checked = true;
+            break;
+        }
+    }
+
+    if(!checked) {
+        setErrorMessage(tournaments[0], "Veuillez choisir un tournoi.");
+        return false;
+    }
+    clearErrorMessage(tournaments[0]);
+    return true;
+}
+
+/**
+ * Test the CGU field
+ * @param cgu - checkbox element
+ * @returns {boolean} true if the CGU are checked, false otherwise
+ */
+function validateCgu(cgu) {
+    if(!cgu.checked) {
+        setErrorMessage(cgu, "Vous devez accepter les conditions d'utilisation.");
+        return false;
+    }
+    clearErrorMessage(cgu);
     return true;
 }
 
@@ -110,4 +163,44 @@ function setErrorMessage(input, message) {
     const errorMessage = formData.querySelector(".error-message");
     errorMessage.textContent = message;
     input.classList.add("error");
+}
+
+/**
+ * If the input has an error message associated to it, remove it
+ * @param {HTMLElement} input - input element for which we want to remove the error message
+ */
+function clearErrorMessage(input) {
+    // if the input does not have an error message, we do nothing
+    if(!input.classList.contains("error")) {
+        return;
+    }
+
+    const formData = input.parentElement;
+    const errorMessage = formData.querySelector(".error-message");
+
+    // clear the error message first
+    errorMessage.textContent = "";
+    input.classList.remove("error");
+}
+
+/**
+ * Close the modal and then display a success message
+ */
+function showSuccessMessage() {
+    const banner = document.getElementById("successBanner");
+
+    closeModal();
+    // wait for the modal to close before showing the banner
+    setTimeout(() => {
+        banner.style.display = "flex";
+        setTimeout(() => {
+            banner.classList.add("show");
+        }, 1);
+        setTimeout(() => {
+            banner.classList.remove("show");
+            setTimeout(() => {
+                banner.style.display = "none";
+            }, 1000);
+        }, 2000);
+    }, modalAnimationDuration/2);
 }

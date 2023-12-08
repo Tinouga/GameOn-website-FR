@@ -1,0 +1,14 @@
+@use "../abstracts" as *;
+
+.btn-primary {
+  display: flex;
+  background: $primary;
+  color: $white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  border: 0;
+
+  &:hover {
+    background: #3876ac;
+  }
+}

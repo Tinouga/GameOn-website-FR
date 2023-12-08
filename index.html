@@ -39,14 +39,14 @@
                 Vous aimez jouer ? Notre prochain évènement gaming est ouvert
                 aux réservations... Places limitées !
             </p>
-            <button class="btn-signup modal-btn">
+            <button class="btn-primary modal-btn">
                 je m'inscris
             </button>
         </div>
         <div class="hero-img">
             <img src="assets/images/bg_img.jpg" alt="img"/>
         </div>
-        <button class="btn-signup modal-btn">
+        <button class="btn-primary modal-btn">
             je m'inscris
         </button>
     </div>
@@ -81,8 +81,8 @@
                         <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
                         <span class="error-message"></span>
                     </div>
-                    <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
                     <div class="formData">
+                        <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
                         <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
                         <label class="checkbox-label" for="location1">
                             <span class="checkbox-icon"></span>
@@ -113,15 +113,16 @@
                             <span class="checkbox-icon"></span>
                             Portland
                         </label>
+                        <span class="error-message"></span>
                     </div>
 
                     <div class="formData">
-                        <input class="checkbox-input" type="checkbox" id="checkbox1" checked required />
-                        <label class="checkbox2-label" for="checkbox1">
+                        <input class="checkbox-input" type="checkbox" id="cgu" name="cgu" checked />
+                        <label class="checkbox2-label" for="cgu">
                             <span class="checkbox-icon"></span>
                             J'ai lu et accepté les conditions d'utilisation.
                         </label>
-
+                        <span class="error-message"></span>
                         <input class="checkbox-input" type="checkbox" id="checkbox2"/>
                         <label class="checkbox2-label" for="checkbox2">
                             <span class="checkbox-icon"></span>
@@ -129,11 +130,17 @@
                         </label>
                         <br>
                     </div>
-                    <button type="submit" class="button btn-submit">C'est parti</button>
+                    <button type="submit" class="btn-primary sign-up-btn">C'est parti</button>
                 </form>
             </div>
         </div>
     </div>
+    <article class="banner success-banner" id="successBanner">
+        <h2 class="success-banner__headline">Merci pour votre inscription !</h2>
+        <p class="success-banner__text">
+            Vous allez recevoir un e-mail de confirmation dans quelques instants.
+        </p>
+    </article>
 </main>
 <footer>
     <p class="copyrights">

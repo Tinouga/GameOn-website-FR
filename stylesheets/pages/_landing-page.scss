@@ -4,10 +4,6 @@ body {
   //background-image: url("background.png");
 }
 
-p {
-  padding: 0.5vw;
-}
-
 img {
   padding-right: 1rem;
 }
@@ -25,18 +21,10 @@ main {
 }
 
 .modal-btn {
-  font-size: 145%;
-  background: $primary;
-  display: flex;
-  margin: auto;
-  color: $white;
-  padding: 0.75rem 2.5rem;
-  border-radius: 1rem;
-  cursor: pointer;
-
-  &:hover {
-    background: #3876ac;
-  }
+  font-size: 1.5625rem;
+  text-transform: capitalize;
+  padding: 1rem 1.5rem;
+  margin: 3.688rem 0 0;
 }
 
 .hero-section {
@@ -53,13 +41,14 @@ main {
     box-shadow: unset;
   }
 
-  > .btn-signup {
+  > .modal-btn {
     display: none;
 
     @include mobile {
       display: block;
       margin: 32px auto 10px;
       padding: 12px 35px;
+      font-size: 0.875rem;
     }
   }
 }
@@ -97,7 +86,7 @@ main {
       content: unset;
     }
 
-    .btn-signup {
+    .modal-btn {
       display: none;
     }
   }
@@ -124,14 +113,6 @@ main {
     width: unset;
     font-size: 1.5rem;
   }
-}
-
-.btn-signup {
-  outline: none;
-  text-transform: capitalize;
-  font-size: 1.3rem;
-  padding: 1rem 1.5rem;
-  margin: 3.688rem 0 0;
 }
 
 .hero-img {
