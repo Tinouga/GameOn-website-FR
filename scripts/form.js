@@ -2,7 +2,7 @@ const form = document.getElementById("inscriptionForm");
 
 form.addEventListener("submit", e => {
     e.preventDefault();
-    if(validateForm()) {
+    if (validateForm()) {
         showSuccessMessage();
         // clear the form's inputs
         form.reset();
@@ -48,7 +48,7 @@ function validateForm() {
  */
 function validateName(name) {
     const nameValue = name.value.trim();
-    if(nameValue.length < 2) {
+    if (nameValue.length < 2) {
         setErrorMessage(name, "Veuillez entrer 2 caractères ou plus.");
         return false;
     }
@@ -65,7 +65,7 @@ function validateEmail(email) {
     const emailValue = email.value.trim();
     const emailRegex = /^[\w._-]+@[\w._-]+\.[\w]+$/;
 
-    if(!emailRegex.test(emailValue)) {
+    if (!emailRegex.test(emailValue)) {
         setErrorMessage(email, "Veuillez entrer une adresse mail valide.");
         return false;
     }
@@ -86,11 +86,11 @@ function validateBirthdate(birthdate) {
     let age = today.getFullYear() - birthdateValue.getFullYear();
     // if the user's birthday has not yet passed this year, subtract 1
     const months = today.getMonth() - birthdateValue.getMonth();
-    if(months < 0 || (months === 0 && today.getDate() < birthdateValue.getDate())) {
+    if (months < 0 || (months === 0 && today.getDate() < birthdateValue.getDate())) {
         age--;
     }
 
-    if(age < 12) {
+    if (age < 12) {
         setErrorMessage(birthdate, "Vous devez avoir au moins 12 ans.");
         return false;
     }
@@ -107,7 +107,7 @@ function validateQuantity(quantity) {
     const quantityValue = quantity.value;
     const quantityRegex = /^0*[0-9]{1,2}$/;
 
-    if(!quantityRegex.test(quantityValue)) {
+    if (!quantityRegex.test(quantityValue)) {
         setErrorMessage(quantity, "Veuillez entrer un nombre entre 0 et 99.");
         return false;
     }
@@ -124,14 +124,14 @@ function validateTournament(tournaments) {
     let checked = false;
 
     // if one tournament is checked, the form is valid
-    for(let i = 0; i < tournaments.length; i++) {
-        if(tournaments[i].checked) {
+    for (let i = 0; i < tournaments.length; i++) {
+        if (tournaments[i].checked) {
             checked = true;
             break;
         }
     }
 
-    if(!checked) {
+    if (!checked) {
         setErrorMessage(tournaments[0], "Veuillez choisir un tournoi.");
         return false;
     }
@@ -145,7 +145,7 @@ function validateTournament(tournaments) {
  * @returns {boolean} true if the CGU are checked, false otherwise
  */
 function validateCgu(cgu) {
-    if(!cgu.checked) {
+    if (!cgu.checked) {
         setErrorMessage(cgu, "Vous devez accepter les conditions d'utilisation.");
         return false;
     }
@@ -163,6 +163,12 @@ function setErrorMessage(input, message) {
     const errorMessage = formData.querySelector(".error-message");
     errorMessage.textContent = message;
     input.classList.add("error");
+
+    // if there isn't already an error message shown for the input, we animate & show one
+    if (!errorMessage.classList.contains("fade-in")) {
+        errorMessage.classList.remove("fade-out");
+        errorMessage.classList.add("fade-in");
+    }
 }
 
 /**
@@ -171,7 +177,7 @@ function setErrorMessage(input, message) {
  */
 function clearErrorMessage(input) {
     // if the input does not have an error message, we do nothing
-    if(!input.classList.contains("error")) {
+    if (!input.classList.contains("error")) {
         return;
     }
 
@@ -179,28 +185,46 @@ function clearErrorMessage(input) {
     const errorMessage = formData.querySelector(".error-message");
 
     // clear the error message first
-    errorMessage.textContent = "";
+    errorMessage.classList.remove("fade-in");
+    errorMessage.classList.add("fade-out");
+    // errorMessage.textContent = ""; // todo ask if it's needed
+
     input.classList.remove("error");
 }
 
 /**
  * Close the modal and then display a success message
  */
+// function showSuccessMessage() {
+//     const banner = document.getElementById("successBanner");
+//     closeModal();
+//     banner.style.display = "flex";
+//     banner.classList.add("show");
+//     // Utilisation d'une animation CSS pour afficher le message pendant 2 secondes
+//     banner.style.animation = "fadeout 2s forwards";
+//     // Vous pouvez également ajouter un événement de fin d'animation si nécessaire
+//     banner.addEventListener("animationend", () => {
+//         banner.style.display = "none";
+//         banner.classList.remove("show");
+//         banner.style.animation = ""; // Réinitialisation de l'animation
+//     });
+// }
 function showSuccessMessage() {
     const banner = document.getElementById("successBanner");
 
+    // first we close the modal
     closeModal();
-    // wait for the modal to close before showing the banner
-    setTimeout(() => {
-        banner.style.display = "flex";
-        setTimeout(() => {
-            banner.classList.add("show");
-        }, 1);
-        setTimeout(() => {
-            banner.classList.remove("show");
-            setTimeout(() => {
-                banner.style.display = "none";
-            }, 1000);
-        }, 2000);
-    }, modalAnimationDuration/2);
+
+    // then we display the success message
+    banner.classList.remove("fade-out");
+    banner.classList.add("fade-in");
+
+    banner.addEventListener("animationend", () => {
+        // we do nothing if the banner is already fading out
+        if (banner.classList.contains("fade-out")) {
+            return;
+        }
+        banner.classList.remove("fade-in");
+        banner.classList.add("fade-out");
+    });
 }
