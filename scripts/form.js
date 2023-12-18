@@ -187,7 +187,7 @@ function clearErrorMessage(input) {
     // clear the error message first
     errorMessage.classList.remove("fade-in");
     errorMessage.classList.add("fade-out");
-    // errorMessage.textContent = ""; // todo ask if it's needed
+    errorMessage.textContent = "";
 
     input.classList.remove("error");
 }
@@ -195,20 +195,6 @@ function clearErrorMessage(input) {
 /**
  * Close the modal and then display a success message
  */
-// function showSuccessMessage() {
-//     const banner = document.getElementById("successBanner");
-//     closeModal();
-//     banner.style.display = "flex";
-//     banner.classList.add("show");
-//     // Utilisation d'une animation CSS pour afficher le message pendant 2 secondes
-//     banner.style.animation = "fadeout 2s forwards";
-//     // Vous pouvez également ajouter un événement de fin d'animation si nécessaire
-//     banner.addEventListener("animationend", () => {
-//         banner.style.display = "none";
-//         banner.classList.remove("show");
-//         banner.style.animation = ""; // Réinitialisation de l'animation
-//     });
-// }
 function showSuccessMessage() {
     const banner = document.getElementById("successBanner");
 

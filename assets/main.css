@@ -39,13 +39,19 @@ ul, ol {
 }
 
 body {
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 main {
-  max-width: 1240px;
   margin: 0 7vw;
+}
+@media only screen and (max-width: 1080px) {
+  main {
+    margin: 0 1.8rem;
+  }
 }
 
 a {
@@ -347,12 +353,10 @@ body > header {
   justify-content: space-between;
   align-items: center;
   margin: 3.3rem calc(7vw - 3rem) 5.25rem 7vw;
-  max-width: calc(1240px + 3rem);
 }
 @media only screen and (max-width: 1080px) {
   body > header {
     margin: 2.3rem 1.8rem 1.75rem 1.8rem;
-    max-width: 1240px;
   }
   body > header.responsive .navbar {
     display: block;
@@ -440,7 +444,7 @@ img {
 main {
   font-size: 130%;
   font-weight: bolder;
-  color: black;
+  color: #000;
   border-radius: 2rem;
   text-align: justify;
 }
@@ -454,11 +458,8 @@ main {
 
 .hero-section {
   border-radius: 10px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  overflow: hidden;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 0.625rem;
+  display: flex;
+  box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.25);
 }
 @media only screen and (max-width: 768px) {
   .hero-section {
@@ -480,7 +481,7 @@ main {
 
 .hero-content {
   padding: 51px 67px;
-  grid-column: span 4;
+  flex-basis: 33%;
   background: #232323;
   color: #fff;
   position: relative;
@@ -540,7 +541,7 @@ main {
 }
 
 .hero-img {
-  grid-column: span 8;
+  flex: 1;
 }
 .hero-img img {
   width: 100%;

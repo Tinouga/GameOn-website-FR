@@ -6,11 +6,9 @@ body > header {
   justify-content: space-between;
   align-items: center;
   margin: 3.30rem calc(7vw - 3rem) 5.25rem 7vw;
-  max-width: calc(1240px + 3rem);
 
   @include tablet {
     margin: 2.30rem 1.80rem 1.75rem 1.80rem;
-    max-width: 1240px;
 
     &.responsive .navbar {
         display: block;
