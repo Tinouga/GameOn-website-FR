@@ -118,7 +118,7 @@ function validateQuantity(quantity) {
 /**
  * Test the tournament field
  * @param tournaments - list of all tournaments
- * @returns {boolean} return true if a tournament is checked, false otherwise
+ * @returns {boolean} true if a tournament is checked, false otherwise
  */
 function validateTournament(tournaments) {
     let checked = false;

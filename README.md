@@ -1,5 +1,5 @@
-# Projet GameOn
-1. Forkez ce repo ;
-2. Il est conseillé d'utiliser VisualStudio Code et vous pouvez utiliser Docker, mais ce n'est pas obligatoire ;
-3. Il n'y a aucune dépendance ;
-4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
+# Projet n°4 : Créez une landing page avec Javascript
+
+![GameOn](https://user.oc-static.com/upload/2021/12/15/16395717662959_HomePage.png)
+
+https://openclassrooms.com/fr/paths/516/projects/807/assignment
