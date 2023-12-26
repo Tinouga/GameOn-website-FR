@@ -16,6 +16,18 @@ body > header {
   }
 }
 
+.header__logo {
+  display: flex;
+
+  img {
+    width: 17.3125rem;
+
+    @include mobile {
+      width: 12rem;
+    }
+  }
+}
+
 .navbar {
   background: $white;
   border-radius:0.5rem;
@@ -47,6 +59,10 @@ body > header {
     font-size: 1.25rem;
     font-weight: 500;
     white-space: nowrap;
+
+    @include mobile {
+      font-size: 1rem;
+    }
 
     &:hover, &.active {
       background-color: $primary;

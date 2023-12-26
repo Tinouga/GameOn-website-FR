@@ -13,8 +13,9 @@ footer {
     font-weight: bolder;
 
     @include mobile {
-      margin-top: 50px;
+      margin-top: 1.81rem;
       text-align: center;
+      font-size: 0.625rem;
     }
   }
 }
