@@ -48,12 +48,18 @@ function validateForm() {
  */
 function validateName(name) {
     const nameValue = name.value.trim();
-    if (nameValue.length < 2) {
-        setErrorMessage(name, "Veuillez entrer 2 caractères ou plus.");
-        return false;
+
+    switch(true) {
+        case nameValue.length ===0:
+            setErrorMessage(name, "Veuillez entrer votre nom.");
+            return false;
+        case nameValue.length < 2:
+            setErrorMessage(name, "Veuillez entrer 2 caractères ou plus.");
+            return false;
+        default:
+            clearErrorMessage(name);
+            return true;
     }
-    clearErrorMessage(name);
-    return true;
 }
 
 /**
@@ -63,14 +69,19 @@ function validateName(name) {
  */
 function validateEmail(email) {
     const emailValue = email.value.trim();
-    const emailRegex = /^[\w._-]+@[\w._-]+\.[\w]+$/;
+    const emailRegex = /^[\w.-]+@[\w.-]+\.\w+$/;
 
-    if (!emailRegex.test(emailValue)) {
-        setErrorMessage(email, "Veuillez entrer une adresse mail valide.");
-        return false;
+    switch(true) {
+        case emailValue.length === 0:
+            setErrorMessage(email, "Veuillez entrer votre adresse mail.");
+            return false;
+        case !emailRegex.test(emailValue):
+            setErrorMessage(email, "Veuillez entrer une adresse mail valide.");
+            return false;
+        default:
+            clearErrorMessage(email);
+            return true;
     }
-    clearErrorMessage(email);
-    return true;
 }
 
 /**
@@ -79,6 +90,11 @@ function validateEmail(email) {
  * @returns {boolean} true if the user is older than 12, false otherwise
  */
 function validateBirthdate(birthdate) {
+    if(birthdate.value.length === 0) {
+        setErrorMessage(birthdate, "Veuillez entrer votre date de naissance.");
+        return false;
+    }
+
     const birthdateValue = new Date(birthdate.value);
 
     // calculate the age of the user
