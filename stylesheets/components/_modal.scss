@@ -35,7 +35,7 @@
   }
 }
 
-.sign-up-btn {
+.sign-up-btn, .modal-success-btn {
   font-size: 1.063rem;
   padding: 0.8rem 3.50rem;
   margin: 1.21rem auto 0;
@@ -83,6 +83,7 @@
 }
 
 .modal-body {
+  position: relative;
 }
 
 label, .text-label {
@@ -206,4 +207,42 @@ input {
 
 .close:after {
   transform: rotate(-45deg);
+}
+
+.inscription-form {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+
+  &.fade-out {
+    opacity: 0;
+  }
+}
+
+.success-container {
+  display: none;
+  opacity: 0;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &.fade-in {
+    display: flex;
+    animation: fade-in 0.5s ease-in forwards;
+  }
+}
+
+.success-message {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    font-size: 2.25rem;
+    text-align: center;
+  }
 }

@@ -1,4 +1,5 @@
 const form = document.getElementById("inscriptionForm");
+const successContainer = document.getElementById("successContainer");
 
 form.addEventListener("submit", e => {
     e.preventDefault();
@@ -209,24 +210,13 @@ function clearErrorMessage(input) {
 }
 
 /**
- * Close the modal and then display a success message
+ * Transition from the form to a success message
  */
 function showSuccessMessage() {
-    const banner = document.getElementById("successBanner");
+    // first we hide the form
+    form.classList.add("fade-out");
 
-    // first we close the modal
-    closeModal();
-
-    // then we display the success message
-    banner.classList.remove("fade-out");
-    banner.classList.add("fade-in");
-
-    banner.addEventListener("animationend", () => {
-        // we do nothing if the banner is already fading out
-        if (banner.classList.contains("fade-out")) {
-            return;
-        }
-        banner.classList.remove("fade-in");
-        banner.classList.add("fade-out");
-    });
+    setTimeout(() => {
+        successContainer.classList.add("fade-in");
+    }, 500);
 }

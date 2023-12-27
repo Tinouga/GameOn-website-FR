@@ -55,7 +55,7 @@
         <div class="content">
             <span class="close"></span>
             <div class="modal-body">
-                <form name="reserve" action="index.html" method="get" id="inscriptionForm">
+                <form name="reserve" action="index.html" method="get" id="inscriptionForm" class="inscription-form">
                     <div class="formData">
                         <label for="firstName">Prénom</label>
                         <input class="text-control" type="text" id="firstName" name="firstName" />
@@ -132,15 +132,17 @@
                     </div>
                     <button type="submit" class="btn-primary sign-up-btn">C'est parti</button>
                 </form>
+                <div class="success-container" id="successContainer">
+                    <div class="success-message">
+                        <h2 class="success-message__text">Merci pour votre inscription</h2>
+                    </div>
+                    <button class="btn-primary modal-success-btn">
+                        Fermer
+                    </button>
+                </div>
             </div>
         </div>
     </div>
-    <article class="banner success-banner" id="successBanner">
-        <h2 class="success-banner__headline">Merci pour votre inscription !</h2>
-        <p class="success-banner__text">
-            Vous allez recevoir un e-mail de confirmation dans quelques instants.
-        </p>
-    </article>
 </main>
 <footer>
     <p class="copyrights">
